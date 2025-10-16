@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index de Révision - Physique BTS CIEL</title>
+    <!-- Chargement de Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chargement de KaTeX (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    
+    <style>
+        /* Configuration de la police Inter par défaut et couleur de fond */
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        /* Assure que les formules KaTeX s'affichent correctement en ligne avec le texte */
+        .katex-display {
+            display: inline-block !important;
+            margin: 0 !important;
+        }
+        /* Style pour les cartes cliquables */
+        .chapter-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .chapter-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 bg-white shadow-md z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gradient">Physique BTS CIEL</h1>
+            
+            <!-- Menu Desktop : Liens simplifiés vers les chapitres -->
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="chapitre0_lois_fondamentales.html" class="hover:text-blue-600 transition duration-150">Chapitre 0</a>
+                <a href="chapitre1_electro_signaux.html" class="hover:text-blue-600 transition duration-150">Chapitre 1</a>
+                <a href="#chapitre2" class="hover:text-blue-600 transition duration-150">Chapitre 2</a>
+                <a href="#chapitre3" class="hover:text-blue-600 transition duration-150">Chapitre 3</a>
+            </nav>
+            
+            <!-- Bouton Menu Mobile -->
+            <button id="menu-toggle" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition duration-150 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Menu Mobile (Initiallement caché) -->
+        <nav id="mobile-menu" class="hidden md:hidden px-4 pb-4 pt-2 border-t border-gray-100">
+            <div class="flex flex-col space-y-2 text-sm font-medium">
+                <a href="chapitre0_lois_fondamentales.html" class="block p-2 rounded-lg hover:bg-blue-50 transition duration-150">Chapitre 0</a>
+                <a href="chapitre1_electro_signaux.html" class="block p-2 rounded-lg hover:bg-blue-50 transition duration-150">Chapitre 1</a>
+                <a href="#chapitre2" class="block p-2 rounded-lg hover:bg-blue-50 transition duration-150">Chapitre 2</a>
+                <a href="#chapitre3" class="block p-2 rounded-lg hover:bg-blue-50 transition duration-150">Chapitre 3</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteneur Principal -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Introduction -->
+        <section class="mb-12 text-center bg-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Index des Chapitres de Révision</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Cliquez sur un chapitre pour accéder au mémo détaillé, aux formules et aux outils de révision associés.
+            </p>
+        </section>
+
+        <!-- Grille des Chapitres -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Chapitre 0 (NOUVEAU): Lois Basiques & Circuits Fondamentaux -->
+            <section id="chapitre0" class="chapter-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-gray-600">
+                <a href="chapitre0_lois_fondamentales.html" class="block">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-700 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                        0. Lois Basiques & Circuits DC
+                    </h3>
+                    <p class="text-gray-600 mb-4">Fondamentaux de l'électricité en régime continu et analyse des circuits purement résistifs.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                        <li class="font-medium">Loi d'Ohm ($$U=R \times I$$)</li>
+                        <li class="font-medium">Lois de Kirchhoff (Nœuds et Mailles)</li>
+                        <li class="font-medium">Puissance et Énergie Électrique</li>
+                        <li class="font-medium">Association de Résistances (R Eq)</li>
+                    </ul>
+                </a>
+            </section>
+            
+            <!-- Chapitre 1 (Ancien Chapitre 1, renommé et révisé pour la complexité) -->
+            <section id="chapitre1" class="chapter-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-600">
+                <a href="chapitre1_electro_signaux.html" class="block">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-700 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                        1. Électrocinétique, Filtrage & Signaux
+                    </h3>
+                    <p class="text-gray-600 mb-4">Analyse des circuits AC/Transitoires, fonctions de transfert et étude fréquentielle des signaux.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                        <li class="font-medium">Régimes Transitoires (RC/RL/RLC)</li>
+                        <li class="font-medium">Impédances, Filtres et Diagrammes de Bode</li>
+                        <li class="font-medium">Séries de Fourier et Taux de Distorsion (TDH)</li>
+                        <li class="font-medium">Théorèmes de Thévenin/Norton en AC</li>
+                    </ul>
+                </a>
+            </section>
+
+            <!-- Chapitre 2 (Ancien Chapitre 2) -->
+            <section id="chapitre2" class="chapter-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-teal-600">
+                <a href="chapitre2_propagation.html" class="block">
+                    <h3 class="text-2xl font-semibold mb-4 text-teal-700 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.072m7.072 0a5 5 0 010 7.072M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                        2. Chapitre 2 (Ondes & Propagation)
+                    </h3>
+                    <p class="text-gray-600 mb-4">Étude de la transmission des signaux par ondes électromagnétiques et lignes de transmission.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                        <li class="font-medium">Vitesse de Propagation et Atténuation</li>
+                        <li class="font-medium">Réflexion, Réfraction et Ondes Stationnaires</li>
+                        <li class="font-medium">Lignes de Transmission et Adaptation</li>
+                        <li class="font-medium">Bilan de Liaison</li>
+                    </ul>
+                </a>
+            </section>
+
+            <!-- Chapitre 3 (Ancien Chapitre 3) -->
+            <section id="chapitre3" class="chapter-card bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-600">
+                <a href="chapitre3_optique.html" class="block">
+                    <h3 class="text-2xl font-semibold mb-4 text-indigo-700 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                        3. Chapitre 3 (Optique & Fibres)
+                    </h3>
+                    <p class="text-gray-600 mb-4">Principes de l'optique géométrique et physique appliqués aux capteurs et aux fibres optiques.</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
+                        <li class="font-medium">Loi de Snell-Descartes et Réflexion Totale</li>
+                        <li class="font-medium">Ouverture Numérique et Fibres</li>
+                        <li class="font-medium">Capteurs (Photodiodes) et Sources (LED/Laser)</li>
+                        <li class="font-medium">Phénomènes de Dispersion</li>
+                    </ul>
+                </a>
+            </section>
+            
+            <!-- Suppression du Chapitre 4 -->
+
+            <!-- Carte pour les outils et formules (Non modifié, transversaux) -->
+            <section class="bg-blue-50 p-6 rounded-xl shadow-inner lg:col-span-3 border-2 border-blue-200">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-800 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    Rappels et Outils Transversaux
+                </h3>
+                <div class="text-gray-700 grid md:grid-cols-2 gap-y-2 gap-x-6">
+                    <p class="mb-2"><strong>Unités et Préfixes :</strong> Rappel des ordres de grandeur (micro, nano, giga...).</p>
+                    <p class="mb-2"><strong>Niveau dBm :</strong> $$P_{dBm} = 10 \log_{10} \left( \frac{P_{W}}{1 \text{ mW}} \right)$$.</p>
+                    <p class="mb-2"><strong>Conversion dB (Tension):</strong> $$G_{dB} = 20 \log_{10}(G_{tension})$$.</p>
+                    <p class="mb-2"><strong>Conversion dB (Puissance):</strong> $$G_{dB} = 10 \log_{10}(G_{puissance})$$.</p>
+                    <p class="mb-2"><strong>Circuits en S :</strong> Utilisation de la variable de Laplace ($$s = j\omega$$) pour l'analyse des filtres.</p>
+                    <p class="mb-2"><strong>Complexes :</strong> Passage de forme polaire ($$Z= |Z|e^{j\phi}$$) à cartésienne ($$Z= R+jX$$).</p>
+                    <p class="mb-2 col-span-full"><strong>Valeur Efficace Totale :</strong> $$V_{eff} = \sqrt{V_{moy}^2 + \sum_{n=1}^\infty \frac{A_n^2}{2}}$$.</p>
+                </div>
+            </section>
+        </div>
+        
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2025 BTS CIEL Physics Index | Outil de révision. | N'hésitez pas à demander une explication détaillée d'une notion !</p>
+        </div>
+    </footer>
+
+    <!-- Chargement de KaTeX (JS) et exécution du rendu -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Rendu KaTeX
+            renderMathInElement(document.body, {
+                // Délimiteurs pour le LaTeX
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},  // Blocs de formules (display mode)
+                    {left: '$', right: '$', display: false}    // Formules en ligne (inline mode - non utilisé dans ce doc mais bonne pratique)
+                ],
+                // Permet les environnements LaTeX
+                throwOnError: false
+            });
+
+            // Menu Mobile Logic 
+            const toggleButton = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // 1. Gestion de l'ouverture/fermeture du menu mobile
+            toggleButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 2. Fermeture du menu après le clic sur un lien 
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Attendre un court instant pour que le défilement se fasse
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 100); 
+                });
+            });
+
+            // 3. Rendre les cartes cliquables (simulation de navigation vers une page)
+            document.querySelectorAll('.chapter-card a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Nous laissons la navigation se faire vers les vrais fichiers.
+                    console.log(`Navigation vers la page: ${link.textContent.trim()}`);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
