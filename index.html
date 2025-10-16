@@ -29,8 +29,8 @@
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#electro" class="hover:text-blue-600 transition duration-150">Électrocinétique</a>
                 <a href="#propagation" class="hover:text-blue-600 transition duration-150">Ondes & Propagation</a>
-                <a href="#optique" class="hover:text-blue-600 transition duration-150">Optique</a>
-                <a href="#thermique" class="hover:text-blue-600 transition duration-150">Thermique</a>
+                <a href="#signaux" class="hover:text-blue-600 transition duration-150">Signaux & Analyse</a>
+                <a href="#lois" class="hover:text-blue-600 transition duration-150">Lois Fondamentales</a>
             </nav>
             <div class="md:hidden">
                 <!-- Simple Menu Icon for Mobile -->
@@ -126,18 +126,54 @@
                     <li class="font-medium">Impact de la Température sur les Semi-conducteurs</li>
                 </ul>
             </section>
+
+            <!-- Module 5: Lois Fondamentales & Résistances -->
+            <section id="lois" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-purple-600">
+                <h3 class="text-2xl font-semibold mb-4 text-purple-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M8 9h8a2 2 0 012 2v2a2 2 0 01-2 2H8a2 2 0 01-2-2v-2a2 2 0 012-2z" /></svg>
+                    5. Lois Fondamentales
+                </h3>
+                <p class="text-gray-600 mb-4">Les bases de l'électricité : Courant, Tension, Puissance et Circuits Résistifs.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li class="font-medium">Loi d'Ohm ($$U=R \times I$$)</li>
+                    <li class="font-medium">Lois de Kirchhoff (Nœuds et Mailles)</li>
+                    <li class="font-medium">Puissance Électrique ($$P = U \times I$$)</li>
+                    <li class="font-medium">Association de Résistances (Série et Parallèle)</li>
+                    <li class="font-medium">Courant Continu vs Alternatif</li>
+                    <li class="font-medium">Valeur Efficace et Valeur Moyenne</li>
+                </ul>
+            </section>
+
+            <!-- Module 6: Analyse Temporelle et Fréquentielle -->
+            <section id="signaux" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-orange-600">
+                <h3 class="text-2xl font-semibold mb-4 text-orange-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 16h4m10 0h4M9 8h6l-3 6z" /></svg>
+                    6. Analyse des Signaux
+                </h3>
+                <p class="text-gray-600 mb-4">Caractérisation des signaux, décomposition de Fourier et niveaux dB.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li class="font-medium">Caractéristiques Temporelles (Période, Fréquence, Crête)</li>
+                    <li class="font-medium">Séries de Fourier (Fondamental et Harmoniques)</li>
+                    <li class="font-medium">Spectre de Raies et Spectre de Bande</li>
+                    <li class="font-medium">Niveaux de Puissance/Tension (dB, dBm, dBV)</li>
+                    <li class="font-medium">Taux de Distorsion Harmonique (TDH)</li>
+                    <li class="font-medium">Déphasage entre deux signaux sinusoïdaux</li>
+                </ul>
+            </section>
             
-            <!-- Carte pour les outils et formules -->
-            <section class="bg-blue-50 p-6 rounded-xl shadow-inner col-span-full border-2 border-blue-200">
+            <!-- Carte pour les outils et formules (mis à jour pour être col-span-2 sur grand écran) -->
+            <section class="bg-blue-50 p-6 rounded-xl shadow-inner lg:col-span-3 border-2 border-blue-200">
                 <h3 class="text-2xl font-semibold mb-4 text-blue-800 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                     Rappels et Outils Transversaux
                 </h3>
                 <div class="text-gray-700">
                     <p class="mb-2"><strong>Unités et Préfixes :</strong> Rappel des ordres de grandeur (micro, nano, giga...).</p>
-                    <p class="mb-2"><strong>Conversion dB :</strong> $$G_{dB} = 20 \log_{10}(G_{tension})$$et$$G_{dB} = 10 \log_{10}(G_{puissance})$$.</p>
+                    <p class="mb-2"><strong>Conversion dB :</strong> $$G_{dB} = 20 \log_{10}(G_{tension})$$ et $$G_{dB} = 10 \log_{10}(G_{puissance})$$.</p>
+                    <p class="mb-2"><strong>Niveau dBm :</strong> $$P_{dBm} = 10 \log_{10} \left( \frac{P_{W}}{1 \text{ mW}} \right)$$.</p>
                     <p class="mb-2"><strong>Circuits en S :</strong> Utilisation de la variable de Laplace ($$s = j\omega$$) pour l'analyse des filtres.</p>
                     <p class="mb-2"><strong>Complexes :</strong> Passage de forme polaire ($$Z= |Z|e^{j\phi}$$) à cartésienne ($$Z= R+jX$$).</p>
+                    <p class="mb-2"><strong>Valeur Efficace Totale :</strong> $$V_{eff} = \sqrt{V_{moy}^2 + \sum_{n=1}^\infty \frac{A_n^2}{2}}$$.</p>
                 </div>
             </section>
         </div>
