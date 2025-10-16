@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index de Révision - Physique BTS CIEL</title>
+    <!-- Chargement de Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Configuration de la police Inter par défaut et couleur de fond */
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 bg-white shadow-md z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gradient">Physique BTS CIEL</h1>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#electro" class="hover:text-blue-600 transition duration-150">Électrocinétique</a>
+                <a href="#propagation" class="hover:text-blue-600 transition duration-150">Ondes & Propagation</a>
+                <a href="#optique" class="hover:text-blue-600 transition duration-150">Optique</a>
+                <a href="#thermique" class="hover:text-blue-600 transition duration-150">Thermique</a>
+            </nav>
+            <div class="md:hidden">
+                <!-- Simple Menu Icon for Mobile -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteneur Principal -->
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Introduction -->
+        <section class="mb-12 text-center bg-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Synthèse des Modules de Physique</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Ce mémo regroupe les concepts essentiels de Physique appliqués aux systèmes du BTS Cybersécurité, Informatique et réseaux, Électronique (CIEL). Cliquez sur les thèmes pour explorer les notions clés.
+            </p>
+        </section>
+
+        <!-- Grille des Modules -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Module 1: Électrocinétique & Filtrage -->
+            <section id="electro" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-blue-600">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                    1. Électrocinétique & Signaux
+                </h3>
+                <p class="text-gray-600 mb-4">Analyse des circuits en régime continu et sinusoïdal, passif et actif.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li class="font-medium">Régime Transitoire (1er et 2nd ordre - RC/RL/RLC)</li>
+                    <li class="font-medium">Impédance Complexe (R, L, C)</li>
+                    <li class="font-medium">Fonction de Transfert ($$T(\omega)$$ou$$T(j\omega)$$)</li>
+                    <li class="font-medium">Diagrammes de Bode (Gain et Phase)</li>
+                    <li class="font-medium">Filtres Passifs (Passe-Bas, Passe-Haut)</li>
+                    <li class="font-medium">Résonance (Circuit RLC série/parallèle)</li>
+                    <li class="font-medium">Théorèmes de Thévenin/Norton en AC</li>
+                </ul>
+            </section>
+
+            <!-- Module 2: Électromagnétisme & Propagation -->
+            <section id="propagation" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-teal-600">
+                <h3 class="text-2xl font-semibold mb-4 text-teal-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-teal-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.828a5 5 0 010-7.072m7.072 0a5 5 0 010 7.072M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    2. Ondes & Propagation
+                </h3>
+                <p class="text-gray-600 mb-4">Compréhension de la transmission d'information par ondes et lignes.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li class="font-medium">Nature des Ondes Électromagnétiques</li>
+                    <li class="font-medium">Vitesse de Propagation (milieu et vide)</li>
+                    <li class="font-medium">Phénomènes de Réflexion et Réfraction</li>
+                    <li class="font-medium">Atténuation (en dB et linéaire)</li>
+                    <li class="font-medium">Lignes de Transmission (Adaptation d'impédance)</li>
+                    <li class="font-medium">Ondes Stationnaires et Coefficient de Réflexion</li>
+                    <li class="font-medium">Bilan de Liaison (Tx, Rx, Pertes)</li>
+                </ul>
+            </section>
+
+            <!-- Module 3: Optique & Capteurs -->
+            <section id="optique" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-indigo-600">
+                <h3 class="text-2xl font-semibold mb-4 text-indigo-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    3. Optique & Fibres
+                </h3>
+                <p class="text-gray-600 mb-4">Les bases de l'optique pour les liaisons numériques et les capteurs.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li class="font-medium">Loi de Snell-Descartes (Réfraction)</li>
+                    <li class="font-medium">Réflexion Totale Interne (Principe des fibres)</li>
+                    <li class="font-medium">Ouverture Numérique (ON) et Angle d'Acceptance</li>
+                    <li class="font-medium">Fibres Optiques (Monomode / Multimode)</li>
+                    <li class="font-medium">Capteurs Optiques (Photodiodes, LED)</li>
+                    <li class="font-medium">Sources Lumineuses (Diode Laser, LED)</li>
+                    <li class="font-medium">Phénomènes de Dispersion (Chromaticité, Modale)</li>
+                </ul>
+            </section>
+            
+            <!-- Module 4: Thermique & Matériaux -->
+            <section id="thermique" class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border-t-4 border-red-600">
+                <h3 class="text-2xl font-semibold mb-4 text-red-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    4. Transferts Thermiques
+                </h3>
+                <p class="text-gray-600 mb-4">Gestion de l'énergie et dissipation pour la fiabilité des systèmes.</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li class="font-medium">Modes de Transfert (Conduction, Convection, Rayonnement)</li>
+                    <li class="font-medium">Résistance Thermique (Rth) et Calcul de $$T_{jonction}$$</li>
+                    <li class="font-medium">Équilibre Thermique (Dissipation de Puissance)</li>
+                    <li class="font-medium">Lois des Gaz Parfaits et Dilatation</li>
+                    <li class="font-medium">Chaleur Spécifique et Capacité Thermique</li>
+                    <li class="font-medium">Choix et Dimensionnement des Dissipateurs</li>
+                    <li class="font-medium">Impact de la Température sur les Semi-conducteurs</li>
+                </ul>
+            </section>
+            
+            <!-- Carte pour les outils et formules -->
+            <section class="bg-blue-50 p-6 rounded-xl shadow-inner col-span-full border-2 border-blue-200">
+                <h3 class="text-2xl font-semibold mb-4 text-blue-800 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                    Rappels et Outils Transversaux
+                </h3>
+                <div class="text-gray-700">
+                    <p class="mb-2"><strong>Unités et Préfixes :</strong> Rappel des ordres de grandeur (micro, nano, giga...).</p>
+                    <p class="mb-2"><strong>Conversion dB :</strong> $$G_{dB} = 20 \log_{10}(G_{tension})$$et$$G_{dB} = 10 \log_{10}(G_{puissance})$$.</p>
+                    <p class="mb-2"><strong>Circuits en S :</strong> Utilisation de la variable de Laplace ($$s = j\omega$$) pour l'analyse des filtres.</p>
+                    <p class="mb-2"><strong>Complexes :</strong> Passage de forme polaire ($$Z= |Z|e^{j\phi}$$) à cartésienne ($$Z= R+jX$$).</p>
+                </div>
+            </section>
+        </div>
+        
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2025 BTS CIEL Physics Index | Outil de révision. | N'hésitez pas à demander une explication détaillée d'une notion !</p>
+        </div>
+    </footer>
+
+</body>
+</html>
