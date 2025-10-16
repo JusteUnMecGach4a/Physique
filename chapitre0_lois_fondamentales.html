@@ -17,137 +17,151 @@
             background-clip: text;
             color: transparent;
         }
-        .katex-display { margin: 1em 0; }
-        .card { @apply bg-white p-6 rounded-xl shadow-lg border-l-4 border-gray-500 mb-6; }
+        /* Style des cartes principales */
+        .card { @apply bg-white p-6 rounded-xl shadow-xl border-l-8 border-blue-600 mb-8 transition-shadow duration-300 hover:shadow-2xl; }
+        /* Style des sous-cartes (analogies/règles) */
+        .sub-card { @apply bg-blue-50 p-4 rounded-lg shadow-inner border border-blue-200; }
+
         .image-placeholder { 
-            @apply flex justify-center items-center bg-gray-100 border border-dashed border-gray-300 rounded-lg p-4 my-4 text-sm text-gray-500; 
-            min-height: 120px;
+            /* Design plus soigné pour l'emplacement des images */
+            @apply flex justify-center items-center bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg p-6 my-4 text-gray-700 font-medium text-sm; 
+            min-height: 150px;
         }
+        .katex-display { margin: 1em 0; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100 text-gray-800">
 
     <!-- En-tête (Header) -->
-    <header class="sticky top-0 bg-white shadow-md z-10">
+    <header class="sticky top-0 bg-white shadow-lg z-10">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <h1 class="text-2xl font-extrabold text-gradient">BTS CIEL - Chapitre 0</h1>
-            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-150">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-150 p-2 rounded-lg hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1 align-text-bottom" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                 Retour à l'Index
             </a>
         </div>
     </header>
 
     <!-- Contenu du Chapitre -->
-    <main class="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900 text-center">0. Lois Basiques & Circuits Fondamentaux</h2>
-        <p class="text-lg text-gray-600 mb-8">Ce chapitre récapitule les concepts fondamentaux de l'électricité en régime continu (DC), indispensables à l'analyse de tous les circuits électroniques.</p>
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-900 text-center bg-white p-4 rounded-xl shadow-md border-b-4 border-blue-400">0. Lois Basiques & Circuits Fondamentaux</h2>
+        <p class="text-lg text-gray-600 mb-10 text-center max-w-3xl mx-auto">Ce chapitre récapitule les concepts fondamentaux de l'électricité en régime continu (DC), indispensables à l'analyse de tous les circuits électroniques.</p>
         
         
         <!-- Section 1: Le Courant Électrique (I) -->
-        <section class="mb-10">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2">0.1 Le Courant Électrique ($I$)</h3>
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 border-b-2 border-blue-200 pb-2">0.1 Le Courant Électrique ($I$)</h3>
             
             <div class="card">
-                <p class="text-lg font-medium text-gray-700 mb-2">Définition & Unité :</p>
-                <p>Le courant électrique ($I$, en Ampères ($A$)) est la quantité d'électrons qui se déplacent dans un circuit par unité de temps. Il se mesure en <strong>série</strong> avec un ampèremètre.</p>
-                <div class="image-placeholder"></div>
+                <p class="text-xl font-semibold text-gray-700 mb-3">Définition & Mesure</p>
+                <p class="text-gray-600">Le courant électrique ($I$, en Ampères ($A$)) est la quantité d'électrons qui se déplacent dans un circuit par unité de temps. Il se mesure en <strong>série</strong> avec un ampèremètre.</p>
+                <div class="image-placeholder">Emplacement pour le schéma de montage Ampèremètre</div>
             </div>
             
-            <div class="card bg-gray-50 border-gray-400">
-                <p class="text-lg font-medium text-gray-700 mb-2">Convention & Analogie :</p>
-                <ul class="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Convention :</strong> Le fléchage du courant est positif dans le sens <strong>inverse</strong> du déplacement des électrons. 
-                        <div class="image-placeholder"></div>
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Convention & Analogie</p>
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li>
+                        <span class="font-semibold text-blue-800">Convention :</span> Le fléchage du courant est positif dans le sens <strong>inverse</strong> du déplacement des électrons. 
+                        <div class="image-placeholder">Schéma du déplacement des électrons dans un conducteur</div>
                     </li>
-                    <li><strong>Analogie :</strong> Le courant est comparé au <strong>débit d'une cascade</strong> : plus on ouvre le barrage (générateur), plus le débit (courant) est important. 
-                        <div class="image-placeholder"></div>
+                    <li>
+                        <span class="font-semibold text-blue-800">Analogie (Débit) :</span> Le courant est comparé au <strong>débit d'une cascade</strong> : plus on ouvre le barrage (générateur), plus le débit (courant) est important. 
+                        <div class="image-placeholder">Illustration de l'analogie du débit de la cascade</div>
                     </li>
                 </ul>
             </div>
         </section>
 
         <!-- Section 2: La Tension Électrique (U) -->
-        <section class="mb-10">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2">0.2 La Tension Électrique ($U$)</h3>
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 border-b-2 border-blue-200 pb-2">0.2 La Tension Électrique ($U$)</h3>
             
             <div class="card">
-                <p class="text-lg font-medium text-gray-700 mb-2">Définition & Unité :</p>
-                <p>La tension électrique ($U$, en Volts ($V$)) est la différence de potentiel (DDP) entre deux points d'un circuit. Elle se mesure en <strong>dérivation</strong> avec un voltmètre. </p>
-                <div class="image-placeholder"></div>
-                $$\large U_{AB} = V_{A} - V_{B}$$
+                <p class="text-xl font-semibold text-gray-700 mb-3">Définition & Mesure</p>
+                <p class="text-gray-600">La tension électrique ($U$, en Volts ($V$)) est la différence de potentiel (DDP) entre deux points d'un circuit. Elle se mesure en <strong>dérivation</strong> avec un voltmètre.</p>
+                <div class="image-placeholder">Emplacement pour le schéma de montage Voltmètre</div>
+                <div class="mt-4">
+                    <p class="font-medium text-gray-700">Formule de la Différence de Potentiel :</p>
+                    $$\large U_{AB} = V_{A} - V_{B}$$
+                </div>
             </div>
             
-            <div class="card bg-gray-50 border-gray-400">
-                <p class="text-lg font-medium text-gray-700 mb-2">Analogie & Représentation :</p>
-                <ul class="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Analogie :</strong> La tension est comparée à la <strong>hauteur d'une cascade</strong> : plus la hauteur (tension) est grande, plus la pression (potentiel) est forte. 
-                        <div class="image-placeholder"></div>
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-gray-700 mb-3">Analogie & Représentation</p>
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li>
+                        <span class="font-semibold text-blue-800">Analogie (Pression) :</span> La tension est comparée à la <strong>hauteur d'une cascade</strong> : plus la hauteur (tension) est grande, plus la pression (potentiel) est forte. 
+                        <div class="image-placeholder">Illustration de l'analogie de la hauteur de la cascade</div>
                     </li>
-                    <li><strong>Représentation :</strong> La tension $U_{AB}$ est symbolisée par une flèche pointant vers $A$ (point de plus haut potentiel, si $U_{AB}>0$) et ayant son origine en $B$. 
-                        <div class="image-placeholder"></div>
+                    <li>
+                        <span class="font-semibold text-blue-800">Représentation :</span> La tension $U_{AB}$ est symbolisée par une flèche pointant vers $A$ (point de plus haut potentiel, si $U_{AB}>0$) et ayant son origine en $B$. 
+                        <div class="image-placeholder">Schéma de la représentation fléchée de $U_{AB}$</div>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <!-- Section 3: Lois de Kirchhoff et Résistance -->
-        <section class="mb-10">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2">0.3 Lois de Kirchhoff et Loi d'Ohm</h3>
+        <!-- Section 3: Lois de Kirchhoff et Loi d'Ohm -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 border-b-2 border-blue-200 pb-2">0.3 Lois de Kirchhoff et Loi d'Ohm</h3>
             
             <div class="card">
-                <p class="text-lg font-medium text-gray-700 mb-2">Loi d'Ohm :</p>
-                <p>Relie la tension, le courant et la résistance ($R$, en Ohms ($\Omega$)) aux bornes d'un dipôle passif (résistance).</p>
+                <p class="text-xl font-semibold text-gray-700 mb-3">Loi d'Ohm (Dipôles Résistifs) :</p>
+                <p class="text-gray-600">Relie la tension, le courant et la résistance ($R$, en Ohms ($\Omega$)) aux bornes d'un dipôle passif.</p>
                 $$\large U = R \times I \quad \implies \quad I = \frac{U}{R} \quad \text{et} \quad R = \frac{U}{I}$$
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="card bg-gray-50 border-gray-400">
-                    <p class="font-medium">Loi des Nœuds (Loi du Courant) :</p>
-                    <p>La somme algébrique des courants entrants et sortants d'un nœud est nulle.</p>
-                    <div class="image-placeholder"></div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="sub-card">
+                    <p class="font-medium text-lg text-blue-800 mb-2">Loi des Nœuds (Loi du Courant) :</p>
+                    <p class="text-gray-600">La somme algébrique des courants entrants et sortants d'un nœud est nulle.</p>
+                    <div class="image-placeholder">Exemple de circuit appliquant la loi des nœuds</div>
                     $$\large \sum I_{\text{entrants}} = \sum I_{\text{sortants}}$$
                 </div>
-                <div class="card bg-gray-50 border-gray-400">
-                    <p class="font-medium">Loi des Mailles (Loi des Tensions) :</p>
-                    <p>La somme algébrique des tensions le long d'une maille fermée est nulle.</p>
-                    <div class="image-placeholder"></div>
+                <div class="sub-card">
+                    <p class="font-medium text-lg text-blue-800 mb-2">Loi des Mailles (Loi des Tensions) :</p>
+                    <p class="text-gray-600">La somme algébrique des tensions le long d'une maille fermée est nulle.</p>
+                    <div class="image-placeholder">Exemple de circuit appliquant la loi des mailles</div>
                     $$\large \sum U = 0 \quad \text{(dans une boucle fermée)}$$
                 </div>
             </div>
         </section>
 
         <!-- Section 4: Association de Résistances et Puissance -->
-        <section class="mb-10">
-            <h3 class="text-2xl font-semibold mb-4 text-gray-700 border-b pb-2">0.4 Puissance et Résistances Équivalentes</h3>
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-blue-700 border-b-2 border-blue-200 pb-2">0.4 Puissance et Résistances Équivalentes</h3>
             
             <div class="card">
-                <p class="text-lg font-medium text-gray-700 mb-2">Puissance Électrique ($P$) :</p>
-                <p>La puissance instantanée ($p(t)$, en Watts) consommée par un dipôle :</p>
+                <p class="text-xl font-semibold text-gray-700 mb-3">Puissance Électrique ($P$)</p>
+                <p class="text-gray-600">La puissance instantanée ($p(t)$, en Watts) consommée par un dipôle :</p>
                 $$\large p(t) = u(t) \times i(t)$$
-                <p>Pour une résistance, la puissance en régime continu :</p>
+                <p class="mt-3 text-gray-600">Pour une résistance, la puissance en régime continu peut s'exprimer de trois manières :</p>
                 $$\large P = U \times I = R \times I^2 = \frac{U^2}{R}$$
             </div>
 
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="card bg-gray-50 border-gray-400">
-                    <p class="font-medium">Résistances en Série :</p>
-                    <div class="image-placeholder"></div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="sub-card">
+                    <p class="font-medium text-lg text-blue-800 mb-2">Résistances en Série :</p>
+                    <p class="text-gray-600">La résistance équivalente est la somme des résistances.</p>
+                    <div class="image-placeholder">Schéma de résistances en série</div>
                     $$\large R_{eq} = R_1 + R_2 + \dots + R_n$$
                 </div>
-                <div class="card bg-gray-50 border-gray-400">
-                    <p class="font-medium">Résistances en Parallèle :</p>
-                    <div class="image-placeholder"></div>
+                <div class="sub-card">
+                    <p class="font-medium text-lg text-blue-800 mb-2">Résistances en Parallèle :</p>
+                    <p class="text-gray-600">L'inverse de la résistance équivalente est la somme des inverses des résistances.</p>
+                    <div class="image-placeholder">Schéma de résistances en parallèle</div>
                     $$\large \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}$$
-                    <p class="text-sm mt-2">Cas de deux résistances : $$R_{eq} = \frac{R_1 R_2}{R_1 + R_2}$$</p>
+                    <p class="text-sm mt-2 font-medium text-gray-700">Cas de deux résistances : $$R_{eq} = \frac{R_1 R_2}{R_1 + R_2}$$</p>
                 </div>
             </div>
             
-            <div class="card mt-6">
-                <h4 class="text-xl font-semibold mb-2 text-gray-700">Régimes de Signal (DC vs AC)</h4>
-                <p>Un signal électrique peut être continu (DC) ou alternatif (AC). </p>
-                <div class="image-placeholder"></div>
-                <ul class="list-disc list-inside ml-4 mt-2 text-sm">
+            <div class="card mt-10">
+                <h4 class="text-xl font-semibold mb-3 text-gray-700 border-b border-blue-100 pb-1">Régimes de Signal (DC vs AC)</h4>
+                <p class="text-gray-600">Un signal électrique peut être continu (DC) ou alternatif (AC). </p>
+                <div class="image-placeholder">Graphique signal continu et alternatif</div>
+                <ul class="list-disc list-inside ml-4 mt-4 text-sm space-y-1 text-gray-600">
                     <li><strong>Continu (DC) :</strong> Valeur constante au cours du temps. Mesuré en position DC (continu) sur un voltmètre.</li>
                     <li><strong>Alternatif (AC) :</strong> Valeur variant au cours du temps (sinusoïdal, carré, etc.). Mesuré en valeur efficace (RMS) sur un voltmètre.</li>
                 </ul>
@@ -159,7 +173,7 @@
     <!-- Pied de page (Footer) -->
     <footer class="bg-gray-800 text-white p-6 mt-12">
         <div class="container mx-auto text-center text-sm">
-            <p>&copy; 2025 BTS CIEL Physics Index | Chapitre 0.</p>
+            <p>&copy; 2025 BTS CIEL Physics Index | Chapitre 0. Outil de révision.</p>
         </div>
     </footer>
 
