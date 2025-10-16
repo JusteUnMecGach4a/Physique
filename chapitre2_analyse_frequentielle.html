@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 2 : Analyse Fréquentielle des Signaux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de KaTeX (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        /* Style des cartes principales (couleur pour Chapitre 2) */
+        .card { @apply bg-white p-6 rounded-xl shadow-xl border-l-8 border-indigo-600 mb-8 transition-shadow duration-300 hover:shadow-2xl; }
+        /* Style des sous-cartes (analogies/règles) */
+        .sub-card { @apply bg-indigo-50 p-4 rounded-lg shadow-inner border border-indigo-200; }
+
+        .katex-display { margin: 1em 0; }
+        
+        /* Style spécifique pour la liste des capacités exigibles */
+        .capacites-list { @apply list-disc list-inside space-y-2 text-gray-600 ml-4; }
+        .capacites-container { @apply bg-white p-6 rounded-xl shadow-md mb-10 border-t-4 border-gray-300; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 bg-white shadow-lg z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gradient">BTS CIEL - Chapitre 2</h1>
+            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-150 p-2 rounded-lg hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1 align-text-bottom" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                Retour à l'Index
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenu du Chapitre -->
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-900 text-center bg-white p-4 rounded-xl shadow-md border-b-4 border-indigo-400">2. Analyse Fréquentielle des Signaux</h2>
+        
+        <!-- Capacités exigibles -->
+        <div class="capacites-container">
+            <h3 class="text-xl font-bold mb-4 text-indigo-700">Capacités Exigibles</h3>
+            <ul class="capacites-list">
+                <li>Savoir qu'un signal périodique peut se décomposer en une somme de sinusoïdes.</li>
+                <li>Savoir analyser un <strong>spectre de raies en amplitude</strong> : identification de la composante continue, du fondamental, de l'harmonique de rang $n$.</li>
+                <li>Savoir analyser le spectre d'un signal quelconque (encombrement spectral, présence de bruit, etc.).</li>
+                <li>Savoir utiliser une échelle en <strong>dB</strong> ($\text{dBm}$ ou $\text{dBV}$) sur un spectre et avoir conscience de son utilité (visualiser les raies de faible amplitude).</li>
+                <li>Connaître les unités des signaux ($\text{dBV}$, $\text{dBm}$, $\text{dB}\mu\text{V}$) et savoir convertir une grandeur exprimée en $V$ en $\text{dBV}$ et une grandeur en $W$ en $\text{dBm}$ (et inversement).</li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Théorème de Fourier et Spectre de Raies -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b-2 border-indigo-200 pb-2">I) Théorème de Fourier</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Décomposition en Série de Fourier</p>
+                <p class="text-gray-600 mb-4">Tout signal périodique de fréquence $F$ peut être décomposé en une somme infinie de fonctions sinusoïdales dont les fréquences sont des multiples entiers de $F$ (fréquence <strong>fondamentale</strong>).</p>
+                $$\large u(t) = U_{moy} + A_{1}\sin(\omega t+\varphi_{1}) + A_{2}\sin(2\omega t+\varphi_{2}) + \dots$$
+                <ul class="list-disc list-inside space-y-2 ml-4 mt-4 text-gray-600">
+                    <li>$U_{moy}$ : Valeur moyenne ou <strong>composante continue</strong> (raie à $f=0 \text{ Hz}$).</li>
+                    <li>$A_{1}\sin(\omega t+\varphi_{1})$ : <strong>Fondamental</strong> (fréquence $F$).</li>
+                    <li>$A_{n}\sin(n\omega t+\varphi_{n})$ : <strong>Harmonique de rang $n$</strong> (fréquence $n \times F$).</li>
+                </ul>
+            </div>
+
+            <!-- Spectre de Raies -->
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-indigo-800 mb-3">Spectre de Raies</p>
+                <p class="text-gray-600">Le spectre d'amplitude représente graphiquement la décomposition. Chaque composante sinusoïdale (fondamental ou harmonique) est représentée par une <strong>raie</strong> dont la hauteur est l'image de son amplitude $A_n$ et sa position est sa fréquence $n \times F$.</p>
+                <ul class="list-disc list-inside space-y-2 ml-4 mt-4 text-sm text-gray-600">
+                    <li>Un signal <strong>sinusoïdal pur</strong> n'a qu'une seule raie à la fréquence $F$.</li>
+                    <li>Un signal <strong>périodique non sinusoïdal</strong> (carré, triangulaire...) possède un fondamental et des harmoniques.</li>
+                    <li>Un signal <strong>non périodique</strong> (aléatoire, impulsion) a un <strong>spectre continu (de bande)</strong>.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 2: Niveaux de Tension et de Puissance (Décibels) -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b-2 border-indigo-200 pb-2">II) Niveaux en Décibels (dB)</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Le Gain en Décibels ($G_{\text{dB}}$)</p>
+                <p class="text-gray-600 mb-4">Le décibel est une unité logarithmique pratique pour exprimer des rapports de puissance ou de tension très importants.</p>
+                
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="sub-card">
+                        <p class="font-medium text-indigo-800">Gain en Puissance :</p>
+                        $$\large G_{\text{dB}} = 10 \times \log_{10}\left(\frac{P_{S}}{P_{E}}\right)$$
+                    </div>
+                    <div class="sub-card">
+                        <p class="font-medium text-indigo-800">Gain en Tension (ou Amplitude) :</p>
+                        $$\large G_{\text{dB}} = 20 \times \log_{10}\left(\frac{V_{S}}{V_{E}}\right)$$
+                    </div>
+                </div>
+            </div>
+
+            <!-- Niveaux Absolus (dBV, dBm) -->
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-indigo-800 mb-3">Niveaux Absolus (Référence)</p>
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li>
+                        <span class="font-semibold text-indigo-800">Décibel-Volt ($\text{dBV}$) :</span> Référence à $1 \text{ Volt}$ efficace ($V_{ref}=1 \text{ V}$).
+                        $$\large V_{\text{dBV}} = 20 \times \log_{10}\left(\frac{V_{eff}}{1 \text{ V}}\right)$$
+                    </li>
+                    <li>
+                        <span class="font-semibold text-indigo-800">Décibel-Microvolt ($\text{dB}\mu\text{V}$) :</span> Référence à $1 \text{ microvolt}$ efficace ($\mu V_{ref}=1 \mu \text{V}$).
+                        $$\large V_{\text{dB}\mu\text{V}} = 20 \times \log_{10}\left(\frac{V_{eff}}{1 \mu \text{V}}\right)$$
+                    </li>
+                    <li>
+                        <span class="font-semibold text-indigo-800">Décibel-Milliwatt ($\text{dBm}$) :</span> Référence à $1 \text{ milliwatt}$ ($P_{ref}=1 \text{ mW}$).
+                        $$\large P_{\text{dBm}} = 10 \times \log_{10}\left(\frac{P_{W}}{1 \text{ mW}}\right)$$
+                    </li>
+                </ul>
+                <p class="text-sm mt-4 italic text-gray-500">Note : Pour un système adapté, la relation $P = V_{eff}^2 / Z$ permet de relier $\text{dBm}$ et $\text{dBV}$ si l'impédance $Z$ est connue (souvent $50 \Omega$ ou $75 \Omega$).</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Valeur Efficace et TDH par le Spectre -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b-2 border-indigo-200 pb-2">III) Qualité du Signal et Mesure Efficace</h3>
+            
+            <!-- Valeur Efficace totale -->
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Valeur Efficace Totale (Par le Spectre)</p>
+                <p class="text-gray-600 mb-4">La valeur efficace totale d'un signal périodique est liée à la puissance totale et peut être calculée à partir de ses composantes spectrales :</p>
+                $$\large V_{eff} = \sqrt{V_{moy}^{2} + \frac{A_{1}^{2}}{2} + \frac{A_{2}^{2}}{2} + \frac{A_{3}^{2}}{2} + \dots + \frac{A_{n}^{2}}{2}}$$
+                <p class="text-sm mt-4 italic text-gray-500">Où $V_{moy}$ est la valeur moyenne (raie à $0 \text{ Hz}$) et $A_n$ l'amplitude de l'harmonique de rang $n$.</p>
+            </div>
+            
+            <!-- Taux de Distorsion Harmonique -->
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-indigo-800 mb-3">Taux de Distorsion Harmonique (TDH)</p>
+                <p class="text-gray-600">Le TDH caractérise la pureté d'un signal sinusoïdal. Il exprime le rapport entre la puissance des harmoniques (rang $\ge 2$) et la puissance du fondamental.</p>
+                $$\large \text{TDH} = \frac{\sqrt{A_{2}^{2} + A_{3}^{2} + \dots}}{A_{1}}$$
+                <p class="text-sm mt-4 italic text-gray-500">Plus le TDH est proche de zéro, plus le signal est proche d'une sinusoïde parfaite.</p>
+            </div>
+        </section>
+        
+        <!-- Section 4: Spectre continu -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-indigo-700 border-b-2 border-indigo-200 pb-2">IV) Spectre des Signaux Non Périodiques</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Spectre de Bande (Continu)</p>
+                <p class="text-gray-600">Les signaux qui ne sont pas périodiques (impulsions, bruits, signaux aléatoires) ne peuvent pas être décomposés en une série de Fourier, mais nécessitent une transformée de Fourier. Leur spectre n'est pas composé de raies discrètes, mais est <strong>continu</strong>, souvent appelé <strong>spectre de bande</strong> (ou encombrement spectral).</p>
+                <p class="text-sm mt-4 italic text-gray-500">Exemple : Le spectre de la voix humaine est un spectre de bande continu.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2025 BTS CIEL Physics Index | Chapitre 2. Outil de révision.</p>
+        </div>
+    </footer>
+
+    <!-- Chargement de KaTeX (JS) et exécution du rendu -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},  // Blocs de formules
+                    {left: '$', right: '$', display: false}    // Formules en ligne
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+</body>
+</html>
