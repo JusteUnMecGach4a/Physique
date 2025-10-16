@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 1 : Analyse Temporelle des Signaux</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de KaTeX (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        /* Style des cartes principales (couleur secondaire pour Chapitre 1) */
+        .card { @apply bg-white p-6 rounded-xl shadow-xl border-l-8 border-teal-600 mb-8 transition-shadow duration-300 hover:shadow-2xl; }
+        /* Style des sous-cartes (analogies/règles) */
+        .sub-card { @apply bg-teal-50 p-4 rounded-lg shadow-inner border border-teal-200; }
+
+        .katex-display { margin: 1em 0; }
+        
+        /* Style spécifique pour la liste des capacités exigibles */
+        .capacites-list { @apply list-disc list-inside space-y-2 text-gray-600 ml-4; }
+        .capacites-container { @apply bg-white p-6 rounded-xl shadow-md mb-10 border-t-4 border-gray-300; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 bg-white shadow-lg z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gradient">BTS CIEL - Chapitre 1</h1>
+            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-150 p-2 rounded-lg hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1 align-text-bottom" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                Retour à l'Index
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenu du Chapitre -->
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-900 text-center bg-white p-4 rounded-xl shadow-md border-b-4 border-teal-400">1. Analyse Temporelle des Signaux</h2>
+        
+        <!-- Capacités exigibles -->
+        <div class="capacites-container">
+            <h3 class="text-xl font-bold mb-4 text-teal-700">Capacités Exigibles</h3>
+            <ul class="capacites-list">
+                <li>Savoir identifier le type de signal (périodique ou non, aléatoire) grâce à son chronogramme.</li>
+                <li>Savoir déterminer les caractéristiques d'un signal périodique (période, fréquence, valeur moyenne, valeur efficace, valeur maximale, valeur crête à crête).</li>
+                <li>Savoir régler un générateur pour produire un signal périodique à partir d'un cahier des charges.</li>
+                <li>Savoir déterminer les caractéristiques (amplitude, valeur efficace, fréquence, pulsation, période, phase à l'origine, etc.) d'un signal sinusoïdal à partir de son expression littérale réelle ou de son chronogramme.</li>
+                <li>Déterminer le déphasage entre deux signaux sinusoïdaux à partir de leurs chronogrammes.</li>
+                <li>Savoir calculer une puissance active en régime sinusoïdal.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Différents Types de Signaux -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-teal-700 border-b-2 border-teal-200 pb-2">I) Différents Types de Signaux</h3>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Signal Analogique -->
+                <div class="sub-card">
+                    <p class="text-lg font-semibold text-teal-800 mb-2">Analogique</p>
+                    <p class="text-sm text-gray-600">La grandeur de sortie $u(t)$ peut prendre à tout instant une infinité de valeurs. La courbe $u=f(t)$ est <strong>continue</strong>.</p>
+                </div>
+                <!-- Signal Échantillonné -->
+                <div class="sub-card">
+                    <p class="text-lg font-semibold text-teal-800 mb-2">Échantillonné</p>
+                    <p class="text-sm text-gray-600">Le signal $u(t)$ est défini qu'à certains instants, multiples de la période d'échantillonnage $T_e$. Discret en temps.</p>
+                </div>
+                <!-- Signal Quantifié -->
+                <div class="sub-card">
+                    <p class="text-lg font-semibold text-teal-800 mb-2">Quantifié</p>
+                    <p class="text-sm text-gray-600">La grandeur de sortie ne peut prendre qu'un nombre déterminé de valeurs. La courbe $u=f(t)$ est <strong>discontinue sur l'axe des ordonnées</strong>.</p>
+                </div>
+                <!-- Signal Numérique -->
+                <div class="sub-card">
+                    <p class="text-lg font-semibold text-teal-800 mb-2">Numérique</p>
+                    <p class="text-sm text-gray-600">Le signal est à la fois <strong>échantillonné et quantifié</strong>. Il est à temps discret et à valeurs discrètes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Caractéristiques des Signaux Périodiques -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-teal-700 border-b-2 border-teal-200 pb-2">II) Caractéristiques des Signaux Périodiques</h3>
+            
+            <!-- Période et Fréquence -->
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">II.1 Période ($T$) et Fréquence ($f$)</p>
+                <p class="text-gray-600 mb-4">La fréquence $f$ (en Hertz, Hz) est l'inverse de la période $T$ (en secondes, s), qui est la durée d'un cycle complet du signal.</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="sub-card">
+                        <p class="font-medium text-teal-800">Fréquence :</p>
+                        $$\large f = \frac{1}{T}$$
+                    </div>
+                    <div class="sub-card">
+                        <p class="font-medium text-teal-800">Période :</p>
+                        $$\large T = \frac{1}{f}$$
+                    </div>
+                </div>
+            </div>
+
+            <!-- Valeur Moyenne -->
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">II.2 Valeur Moyenne ($U_{moy}$ ou $\langle u(t) \rangle$)</p>
+                <p class="text-gray-600 mb-3">La valeur moyenne est la composante continue du signal. Elle se mesure avec un multimètre en position **DC** ($\overline{\text{---}}$).</p>
+                <p class="font-medium text-gray-700">Définition générale (Intégrale) :</p>
+                $$\large \langle u(t) \rangle = \frac{1}{T}\int_{0}^{T}u(t)dt$$
+                <p class="mt-3 font-medium text-gray-700">Pour les signaux "simples" (calcul d'aire) :</p>
+                $$\large \langle u(t) \rangle = \frac{\text{Aire}}{\text{Période}}$$
+                <p class="text-sm mt-4 italic text-gray-500">Un <strong>signal alternatif</strong> est un signal périodique de valeur moyenne nulle. Tout signal périodique peut être décomposé en une composante continue ($\langle u(t) \rangle$) et une composante alternative ($u_{AC}(t)$).</p>
+                $$\large u(t) = \langle u(t) \rangle + u_{AC}(t)$$
+            </div>
+
+            <!-- Valeur Efficace -->
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">II.3 Valeur Efficace ($U_{eff}$)</p>
+                <p class="text-gray-600 mb-3">La valeur efficace est une mesure de l'énergie (ou de la puissance) transportée par le signal. Elle se mesure avec un multimètre en position **AC** ou **RMS** (Root Mean Square).</p>
+                <p class="font-medium text-gray-700">Définition :</p>
+                $$\large U_{eff} = \sqrt{\langle u^2(t) \rangle}$$
+            </div>
+        </section>
+        
+        <!-- Section 3: Représentation des Signaux Sinusoïdaux -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-teal-700 border-b-2 border-teal-200 pb-2">III) Représentation Sinusoïdale</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Expression Temporelle</p>
+                <p class="text-gray-600 mb-4">Un signal alternatif sinusoïdal $u(t)$ est défini par son amplitude, sa pulsation et sa phase à l'origine :</p>
+                $$\large u(t) = A \times \sin(\omega t + \varphi)$$
+                <ul class="list-disc list-inside space-y-2 ml-4 mt-4 text-gray-600">
+                    <li>$A$ : Amplitude (ou valeur maximale) en V.</li>
+                    <li>$\omega$ : Pulsation en $\text{s}^{-1}$ ou $\text{rad/s}$.</li>
+                    <li>$\varphi$ : Phase à l'origine (à $t=0$) en radians (rad).</li>
+                </ul>
+            </div>
+
+            <!-- Relations et Phase -->
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-teal-800 mb-3">Relations Clés (Sinusoïdal)</p>
+                <ul class="list-disc list-inside space-y-3 ml-4">
+                    <li>
+                        <span class="font-semibold text-teal-800">Pulsation et Fréquence :</span>
+                        $$\large \omega = 2\pi f$$
+                    </li>
+                    <li>
+                        <span class="font-semibold text-teal-800">Amplitude et Valeur Efficace :</span>
+                        $$\large A = U_{eff} \times \sqrt{2} \quad \text{soit} \quad u(t) = U_{eff} \sqrt{2} \sin(\omega t + \varphi)$$
+                    </li>
+                    <li>
+                        <span class="font-semibold text-teal-800">Déphasage :</span> Le déphasage $\varphi$ entre deux signaux $u(t)$ et $u_{ref}(t)$ est lié au décalage temporel $\tau$ :
+                        $$\large |\varphi| = 2\pi \times \frac{\tau}{T}$$
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 4: Puissance en Régime Sinusoïdal -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-teal-700 border-b-2 border-teal-200 pb-2">IV) Puissance d'un Signal</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Puissance Instantanée</p>
+                <p class="text-gray-600 mb-4">La puissance instantanée $p(t)$ transitant du générateur vers le récepteur est définie par le produit instantané de la tension et du courant :</p>
+                $$\large p(t) = u(t) \times i(t)$$
+                <p class="text-sm mt-4 italic text-gray-500">Le sens de transfert de puissance est dans le sens du récepteur lorsque $p(t) > 0$.</p>
+            </div>
+            
+            <div class="sub-card mt-6">
+                <p class="text-xl font-semibold text-teal-800 mb-3">Puissance Active (Moyenne)</p>
+                <p class="text-gray-600">La **puissance active** $P$ est la valeur moyenne de la puissance instantanée :</p>
+                $$\large P = \langle p(t) \rangle$$
+                <p class="mt-4 text-gray-600 font-medium">En régime sinusoïdal, la puissance active s'exprime par :</p>
+                $$\large P = U_{eff} I_{eff} \cos(\phi)$$
+                <p class="text-sm mt-2 italic text-gray-500">Où $\phi$ est le déphasage entre $u(t)$ et $i(t)$, et $\cos(\phi)$ est le facteur de puissance.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2025 BTS CIEL Physics Index | Chapitre 1. Outil de révision.</p>
+        </div>
+    </footer>
+
+    <!-- Chargement de KaTeX (JS) et exécution du rendu -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},  // Blocs de formules
+                    {left: '$', right: '$', display: false}    // Formules en ligne
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+</body>
+</html>
