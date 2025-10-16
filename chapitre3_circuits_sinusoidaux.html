@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 3 : Circuits Linéaires en Régime Sinusoïdal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de KaTeX (CSS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" crossorigin="anonymous">
+    
+    <style>
+        :root { font-family: 'Inter', sans-serif; }
+        .text-gradient {
+            background-image: linear-gradient(to right, #1d4ed8, #2563eb, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        /* Style des cartes principales (couleur pour Chapitre 3) */
+        .card { @apply bg-white p-6 rounded-xl shadow-xl border-l-8 border-red-600 mb-8 transition-shadow duration-300 hover:shadow-2xl; }
+        /* Style des sous-cartes (analogies/règles) */
+        .sub-card { @apply bg-red-50 p-4 rounded-lg shadow-inner border border-red-200; }
+
+        .katex-display { margin: 1em 0; }
+        
+        /* Style spécifique pour la liste des capacités exigibles */
+        .capacites-list { @apply list-disc list-inside space-y-2 text-gray-600 ml-4; }
+        .capacites-container { @apply bg-white p-6 rounded-xl shadow-md mb-10 border-t-4 border-gray-300; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- En-tête (Header) -->
+    <header class="sticky top-0 bg-white shadow-lg z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-gradient">BTS CIEL - Chapitre 3</h1>
+            <a href="index.html" class="text-sm font-medium text-gray-600 hover:text-blue-600 transition duration-150 p-2 rounded-lg hover:bg-gray-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1 align-text-bottom" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                Retour à l'Index
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenu du Chapitre -->
+    <main class="container mx-auto px-4 py-8 md:py-12 max-w-5xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-gray-900 text-center bg-white p-4 rounded-xl shadow-md border-b-4 border-red-400">3. Circuits Linéaires en Régime Sinusoïdal</h2>
+        
+        <!-- Capacités exigibles -->
+        <div class="capacites-container">
+            <h3 class="text-xl font-bold mb-4 text-red-700">Capacités Exigibles</h3>
+            <ul class="capacites-list">
+                <li>Savoir associer un signal sinusoïdal à sa notation complexe.</li>
+                <li>Connaître et savoir utiliser la loi d'Ohm en régime sinusoïdal (Impédance Complexe).</li>
+                <li>Connaître les impédances complexes d'une résistance, d'un condensateur et d'une bobine.</li>
+                <li>Savoir calculer une puissance active en régime sinusoïdal et connaître la relation avec le niveau $\text{dBm}$.</li>
+                <li>Connaître et appliquer les théorèmes de superposition, de Thévenin et de Norton en notation complexe.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Utilisation de la Notation Complexe -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-red-700 border-b-2 border-red-200 pb-2">I) Notation Complexe (Régime AC)</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Nombre Complexe Associé à une Grandeur Sinusoïdale</p>
+                <p class="text-gray-600 mb-4">À tout signal sinusoïdal $s(t) = S\sqrt{2}\sin(2\pi ft + \varphi_{s})$, on associe un nombre complexe $\underline{S}$ :</p>
+                $$\large \underline{S} = [S; \varphi_{s}] = S \cdot e^{j\varphi_{s}}$$
+                <ul class="list-disc list-inside space-y-2 ml-4 mt-4 text-gray-600">
+                    <li>$S$ : Module égal à la <strong>valeur efficace</strong> du signal ($V_{eff}$ ou $I_{eff}$).</li>
+                    <li>$\varphi_{s}$ : Argument égal à la <strong>phase à l'origine</strong> du signal (en radians).</li>
+                </ul>
+            </div>
+
+            <!-- Intérêt de la Notation Complexe -->
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-red-800 mb-3">Intérêt Principal</p>
+                <p class="text-gray-600">En notation complexe, l'opération de dérivation par rapport au temps ($\frac{d}{dt}$) correspond à une simple multiplication par $j\omega$ (où $\omega = 2\pi f$).</p>
+                $$\large \text{Si } s(t) \leftrightarrow \underline{S} \text{ alors } \frac{ds(t)}{dt} \leftrightarrow j\omega \underline{S}$$
+            </div>
+        </section>
+
+        <!-- Section 2: Impédance Complexe des Dipôles -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-red-700 border-b-2 border-red-200 pb-2">II) Impédance Complexe $\underline{Z}$ et Admittance $\underline{Y}$</h3>
+            
+            <div class="card">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Définition et Loi d'Ohm en AC</p>
+                <p class="text-gray-600 mb-4">L'impédance complexe $\underline{Z}$ est le rapport entre la tension complexe et le courant complexe (Loi d'Ohm en AC) :</p>
+                $$\large \underline{Z} = \frac{\underline{U}}{\underline{I}}$$
+                <p class="text-gray-600 mt-4">Le module de $\underline{Z}$ est l'impédance réelle $Z = \frac{U_{eff}}{I_{eff}}$ (en $\Omega$). L'admittance complexe est l'inverse de l'impédance : $\underline{Y} = \frac{1}{\underline{Z}}$ (en Siemens, S).</p>
+            </div>
+            
+            <!-- Tableau des Impédances Élémentaires -->
+            <div class="sub-card mt-6">
+                <p class="text-lg font-semibold text-red-800 mb-3">Impédances des Composants Passifs (Pulsation $\omega$)</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-gray-600 bg-white rounded-lg shadow-sm">
+                        <thead class="text-xs text-red-700 uppercase bg-red-100">
+                            <tr>
+                                <th scope="col" class="px-3 py-2">Dipôle</th>
+                                <th scope="col" class="px-3 py-2">Impédance $\underline{Z}$</th>
+                                <th scope="col" class="px-3 py-2">Module $Z$ et Argument $\varphi$</th>
+                                <th scope="col" class="px-3 py-2">Équivalence HF / BF</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-white border-b hover:bg-red-50">
+                                <td class="px-3 py-2 font-medium text-gray-900">Résistance (R)</td>
+                                <td class="px-3 py-2">$$\underline{Z_R} = R$$</td>
+                                <td class="px-3 py-2">$$[R; 0]$$</td>
+                                <td class="px-3 py-2">Reste $R$ (indépendant de $\omega$)</td>
+                            </tr>
+                            <tr class="bg-white border-b hover:bg-red-50">
+                                <td class="px-3 py-2 font-medium text-gray-900">Bobine (L)</td>
+                                <td class="px-3 py-2">$$\underline{Z_L} = jL\omega$$</td>
+                                <td class="px-3 py-2">$$[L\omega; +\frac{\pi}{2}]$$</td>
+                                <td class="px-3 py-2">BF ($\omega \to 0$): Fil (court-circuit) | HF ($\omega \to \infty$): Interrupteur (ouvert)</td>
+                            </tr>
+                            <tr class="bg-white hover:bg-red-50">
+                                <td class="px-3 py-2 font-medium text-gray-900">Condensateur (C)</td>
+                                <td class="px-3 py-2">$$\underline{Z_C} = \frac{1}{jC\omega}$$</td>
+                                <td class="px-3 py-2">$$[\frac{1}{C\omega}; -\frac{\pi}{2}]$$</td>
+                                <td class="px-3 py-2">BF ($\omega \to 0$): Interrupteur (ouvert) | HF ($\omega \to \infty$): Fil (court-circuit)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Association et Théorèmes -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-red-700 border-b-2 border-red-200 pb-2">III) Association et Théorèmes de Circuits</h3>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Association -->
+                <div class="sub-card">
+                    <p class="font-medium text-lg text-red-800 mb-2">Association d'Impédances</p>
+                    <ul class="list-disc list-inside space-y-3 ml-4">
+                        <li>
+                            <span class="font-semibold text-red-800">Série :</span> Les impédances s'ajoutent.
+                            $$\large \underline{Z_{eq}} = \underline{Z_1} + \underline{Z_2} + \dots$$
+                        </li>
+                        <li>
+                            <span class="font-semibold text-red-800">Parallèle :</span> Les admittances s'ajoutent ($\underline{Y_{eq}} = \underline{Y_1} + \underline{Y_2} + \dots$).
+                            $$\large \underline{Z_{eq}} = \frac{\underline{Z_1} \underline{Z_2}}{\underline{Z_1} + \underline{Z_2}} \quad \text{(pour 2 dipôles)}$$
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Résonance -->
+                <div class="sub-card">
+                    <p class="font-medium text-lg text-red-800 mb-2">Dipôles Résonants (RLC)</p>
+                    <p class="text-gray-600">L'impédance est purement résistive ($\underline{Z}=R$) à la fréquence de résonance $f_0$.</p>
+                    $$\large f_{0} = \frac{1}{2\pi\sqrt{LC}}$$
+                    <p class="text-sm mt-3 text-gray-500 italic">Conséquences : $I$ est maximal en RLC série; $U$ est maximal en RLC parallèle.</p>
+                </div>
+            </div>
+            
+            <!-- Diviseur et Théorèmes -->
+            <div class="card mt-6">
+                <p class="text-xl font-semibold text-gray-700 mb-3">Théorèmes de l'Électrocinétique en AC</p>
+                <ul class="list-disc list-inside space-y-3 ml-4 text-gray-600">
+                    <li>
+                        <span class="font-semibold text-red-800">Diviseur de Tension (à vide) :</span>
+                        $$\large \underline{U} = \frac{\underline{Z_2}}{\underline{Z_1} + \underline{Z_2}} \times \underline{E}$$
+                    </li>
+                    <li>
+                        <span class="font-semibold text-red-800">Théorème de Superposition :</span> Applicable en notation complexe. La réponse totale est la somme des réponses obtenues en considérant chaque source indépendante isolément.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-red-800">Théorème de Thévenin (MET) :</span> Tout dipôle actif $\to$ $\underline{E}_{TH}$ en série avec $\underline{Z}_{TH}$.
+                    </li>
+                    <li>
+                        <span class="font-semibold text-red-800">Théorème de Norton (MEN) :</span> Tout dipôle actif $\to$ $\underline{I}_{N}$ en parallèle avec $\underline{Z}_{N}$ ($\underline{Z}_{N} = \underline{Z}_{TH}$).
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Section 4: Puissance en AC -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold mb-6 text-red-700 border-b-2 border-red-200 pb-2">IV) Rappels de Puissance en AC</h3>
+            
+            <div class="sub-card">
+                <p class="text-lg font-semibold text-red-800 mb-3">Puissance Active ($P$)</p>
+                <p class="text-gray-600 mb-2">La puissance active (moyenne) en régime sinusoïdal :</p>
+                $$\large P = U_{eff} I_{eff} \cos(\phi)$$
+                <p class="text-sm mt-3 text-gray-500 italic">Où $\cos(\phi)$ est le facteur de puissance et $\phi$ est le déphasage entre la tension et le courant.</p>
+                
+                <p class="text-gray-600 mt-4 font-medium">Lien avec le niveau $\text{dBm}$ :</p>
+                $$\large P_{\text{dBm}} = 10 \times \log_{10}\left(\frac{P_{W}}{1 \text{ mW}}\right)$$
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pied de page (Footer) -->
+    <footer class="bg-gray-800 text-white p-6 mt-12">
+        <div class="container mx-auto text-center text-sm">
+            <p>&copy; 2025 BTS CIEL Physics Index | Chapitre 3. Outil de révision.</p>
+        </div>
+    </footer>
+
+    <!-- Chargement de KaTeX (JS) et exécution du rendu -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},  // Blocs de formules
+                    {left: '$', right: '$', display: false}    // Formules en ligne
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+
+</body>
+</html>
